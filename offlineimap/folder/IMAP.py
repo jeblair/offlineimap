@@ -53,6 +53,11 @@ class IMAPFolder(BaseFolder):
             imapobj.select(self.getfullname(), readonly = True, force = force)
 
     def suggeststhreads(self):
+        onethread = self.config.getdefaultboolean(
+            "Repository %s" % self.repository.getname(),
+            "singlethreadperfolder", 0)
+        if onethread:
+            return 0
         return 1
 
     def waitforthread(self):
