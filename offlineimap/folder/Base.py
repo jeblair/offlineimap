@@ -181,7 +181,7 @@ class BaseFolder(object):
     def getmessageuidlist(self):
         """Gets a list of UIDs.
         You may have to call cachemessagelist() before calling this function!"""
-        return self.getmessagelist().keys()
+        return sorted(self.getmessagelist().keys())
 
     def getmessagecount(self):
         """Gets the number of messages."""
